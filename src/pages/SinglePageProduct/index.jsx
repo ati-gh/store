@@ -6,11 +6,11 @@ import useStore from "../../store/store";
 export default function SinglePageProduct() {
   const { id } = useParams();
   const { data: singleCart, isLoading } = useSingleProduct(id);
-  const { productsCard, inc } = useStore();
+  const { productsCard, inc, dec } = useStore();
   const handleAddToCart = (productId) => {
     inc({ id: productId });
   };
-  console.log(productsCard);
+
   const cartItem = productsCard.find((item) => item.id === singleCart?.id);
   const quantity = cartItem?.quantity || 0;
   return (
@@ -25,9 +25,15 @@ export default function SinglePageProduct() {
           />
           <h2>{singleCart?.title}</h2>
           <section>
+            <button
+              onClick={() => {
+                dec({ id: singleCart?.id });
+              }}
+            >
+              -
+            </button>
+            <span> {quantity} </span>
             <button onClick={() => handleAddToCart(singleCart?.id)}>+</button>
-            <span> {quantity}</span>
-            {/* <button onClick={handleAddToCart}>-</button> */}
           </section>
         </>
       )}

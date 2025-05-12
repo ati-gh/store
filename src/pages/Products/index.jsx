@@ -35,6 +35,7 @@ export default function Products() {
             id={product.id}
             image={product.image}
             title={product.title}
+            category={product.category}
             quantity={quantity}
             onAddToCart={(e) => handleAddToCart(e, product?.id)}
           />

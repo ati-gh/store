@@ -6,6 +6,7 @@ export default function SingleProduct({
   id,
   onAddToCart,
   quantity,
+  category,
 }) {
   const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ export default function SingleProduct({
         alt={title}
       />
       <h2>{title}</h2>
+      <span>{category}</span>
       <div className="flex justify-between items-center">
         <span>تعداد: {quantity}</span>
         <button
