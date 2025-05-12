@@ -1,11 +1,13 @@
 import SkeletonLoader from "../../components/kit/Skeleton";
 import SingleProduct from "../../components/SingleProduct";
 import useProducts from "../../hooks/useProducts";
-import Skeleton from "@mui/material/Skeleton";
 import useStore from "../../store/store";
+import { useCategory } from "../../contexts/CategoryContext";
 
 export default function Products() {
-  const { data: products, isLoading } = useProducts();
+  const { selectedCategory } = useCategory();
+  const { data: products, isLoading } = useProducts(selectedCategory);
+
   const { productsCard, inc } = useStore();
 
   const handleAddToCart = (e, productId) => {
